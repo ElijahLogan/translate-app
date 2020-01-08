@@ -2,7 +2,7 @@ import React from 'react';
 
 import Description from './description'; 
 import Languages from './languages'; 
-import Translation from './translation';
+import Translation from './record';
 
 class TranslationPage extends React.Component {
     constructor() {
