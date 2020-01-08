@@ -2,6 +2,8 @@ import React from 'react'
 
 import MicRecorder from 'mic-recorder-to-mp3'
 import { ReactMic } from 'react-mic';
+import fs from 'fs'
+
 
 import Pizzicato from 'pizzicato';
 
@@ -15,7 +17,7 @@ class Record extends React.Component {
         }
         this.startRecording = this.startRecording.bind(this)
         this.stopRecording = this.stopRecording.bind(this)
-        this.playSound = this.playSound.bind(this)
+
     }
 
     componentWillMount() {
@@ -47,7 +49,7 @@ class Record extends React.Component {
         console.log(this.state.record)
         this.state.recorder
             .stop()
-            .getMp3().then(([buffer, blob]) => {
+            .getMp3().then(async ([buffer, blob]) => {
                 // do what ever you want with buffer and blob
                 // Example: Create a mp3 file and play
                 const file = new File(buffer, 'me-at-thevoice.mp3', {
@@ -57,7 +59,9 @@ class Record extends React.Component {
 
 
 
+
                 const player = new Audio(URL.createObjectURL(file));
+
                 player.play();
 
             }).catch((e) => {
@@ -79,9 +83,7 @@ class Record extends React.Component {
 
     }
 
-    playSound() {
-        this.state.sound.play()
-    }
+
 
     render() {
         return (
