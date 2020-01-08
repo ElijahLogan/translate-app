@@ -54,7 +54,7 @@ class Record extends React.Component {
                     type: blob.type,
                     lastModified: Date.now()
                 });
-                console.log('file downloaded')
+
 
 
                 const player = new Audio(URL.createObjectURL(file));
